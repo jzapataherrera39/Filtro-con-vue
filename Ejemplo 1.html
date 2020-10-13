@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejemplo Captura de Datos</title>
+    <link rel="stylesheet" href="estilo.css" />
+  </head>
+  <body>
+    <main>
+      <center>
+        <h1>CAPTURA DE DATOS DESDE TABLAS</h1>
+        <hr size="30" color="blue"/>
+        <br/>
+        <table border="5">
+          <thead>
+            <tr>
+              <th>Dato Solicitado</th>
+              <th>Dato ingresado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Nombres</td>
+              <td><input type="text" v-model="estudiante.nom" autofocus /></td>
+            </tr>
+            <tr>
+              <td>Apellidos</td>
+              <td><input type="text" v-model="estudiante.ape" /></td>
+            </tr>
+            <tr>
+              <td>Nota 1</td>
+              <td><input type="text" v-model="estudiante.n1" /></td>
+            </tr>
+            <tr>
+              <td>Nota 2</td>
+              <td><input type="text" v-model="estudiante.n2" /></td>
+            </tr>
+            <tr>
+              <td>Nota 3</td>
+              <td><input type="text" v-model="estudiante.n3" /></td>
+            </tr>
+            <tr>
+              <td>Nota Final</td>
+              <td>{{notafinal}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <table border="5">
+          <tr>
+            <td><button @click="agregar()">AGREGAR</button></td>
+            <td>
+              <select @change="filtrarArray()" v-model="opc" required>
+                <option disabled selected>Selecciona Criterio</option>
+                <option value="0"> Nota desde 0 e inferior a 1.0 </option>
+                <option value="1"> Nota desde 1.0 e inferior a 2.0 </option>
+                <option value="2"> Nota desde 2.0 e inferior a 3.0 </option>
+                <option value="3"> Nota desde 3.0 e inferior a 4.0 </option>
+                <option value="4">Nota desde 4.0 hasta 5.0</option>
+              </select>
+            </td>
+          </tr>
+        </table>
+        <br />
+        <h1>LISTADO DE ESTUDIANTES</h1>
+        <hr size="15" color="blue" />
+        <br />
+        <table border="5">
+          <th>Nombres</th>
+          <th>Apellidos</th>
+          <th>Nota 1</th>
+          <th>Nota 2</th>
+          <th>Nota 3</th>
+          <th>Nota Final</th>
+          <tbody>
+            <tr v-for="est in myArrayEst">
+              <td>{{est.nom}}</td>
+              <td>{{est.ape}}</td>
+              <td>{{est.n1}}</td>
+              <td>{{est.n2}}</td>
+              <td>{{est.n3}}</td>
+              <td>{{est.nf}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <br />
+        <h1>{{nam}}</h1>
+        <hr size="15" color="blue" />
+        <br />
+        <table border="5">
+          <th>Nombres</th>
+          <th>Apellidos</th>
+          <th>Nota 1</th>
+          <th>Nota 2</th>
+          <th>Nota 3</th>
+          <th>Nota Final</th>
+          <tbody>
+            <tr v-for="est in estFiltrado">
+              <td>{{est.nom}}</td>
+              <td>{{est.ape}}</td>
+              <td>{{est.n1}}</td>
+              <td>{{est.n2}}</td>
+              <td>{{est.n3}}</td>
+              <td>{{est.nf}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </center>
+      <pre>
+        {{$data}}
+      </pre>
+    </main>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script src="Ejemplo1.js"></script>
+  </body>
+</html>
